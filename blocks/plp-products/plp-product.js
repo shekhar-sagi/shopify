@@ -5,5 +5,3 @@ export default function decorate(block) {
   title.textContent = block.dataset.title || 'Choose what best suits you';
   block.prepend(title);
 }
-
-  
