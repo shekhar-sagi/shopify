@@ -195,9 +195,9 @@
     "id": "plp-products",
     "fields": [
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
-        "name": "title",
+        "name": "text",
         "label": "Page Title",
         "value": "Choose what best suits you"
       }
