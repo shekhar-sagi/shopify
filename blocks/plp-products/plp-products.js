@@ -43,7 +43,7 @@ export default async function decorate(block) {
   `;
 
   try {
-    const response = await fetch(`https://${SHOPIFY_STORE_DOMAIN}/api/2023-04/graphql.json`, {
+    const response = await fetch(`https://${SHOPIFY_STORE_DOMAIN}/api/2025-01/graphql.json`, {
       method: 'POST',
       headers: {
         'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
