@@ -64,8 +64,6 @@ export default async function decorate(block) {
     }
     console.log('🚀 PLP block executing');
     console.log('Raw Shopify response:', json);
-
-
     const ul = document.createElement('ul');
     ul.className = 'plp-card-list';
 
