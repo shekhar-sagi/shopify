@@ -30,14 +30,12 @@ function getCartCount() {
   
     renderMiniCart(block);
   
-    // Update on custom cart events
     document.addEventListener('add-to-cart', () => {
       renderMiniCart(block);
     });
   
-    // Optional: link to cart page
     block.addEventListener('click', () => {
-      window.location.href = '/cart'; // or open drawer/modal later
+      window.location.href = '/cart';
     });
   }
-    
+  
