@@ -117,5 +117,5 @@ export default async function decorate(block) {
     console.error('Shopify API Error:', err);
     loading.textContent = 'Failed to load products.';
   }
->>>>>>> dc9e575 (fetch products)
 }
+
