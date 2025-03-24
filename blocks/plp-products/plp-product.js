@@ -9,8 +9,6 @@ export default async function decorate(block) {
 
   title.textContent = block.dataset.pagetitle || 'Choose what best suits you';
   block.prepend(title);
-
-
   const loading = document.createElement('p');
   loading.textContent = 'Loading products...';
   block.append(loading);
@@ -118,4 +116,3 @@ export default async function decorate(block) {
     loading.textContent = 'Failed to load products.';
   }
 }
-
