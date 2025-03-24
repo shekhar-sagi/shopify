@@ -43,24 +43,20 @@ export default async function decorate(block) {
   `;
 
   try {
-    const response = await fetch(
-      `https://${SHOPIFY_STORE_DOMAIN}/api/2025-01/graphql.json`,
-      {
-        method: 'POST',
-        headers: {
-          'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({ query }),
-      }
-    );
+    const response = await fetch(`https://${SHOPIFY_STORE_DOMAIN}/api/2025-01/graphql.json`, {
+      method: 'POST',
+      headers: {
+        'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ query }),
+    });
 
     const json = await response.json();
     loading.remove();
 
-    const products =
-      json?.data?.products?.edges?.map((edge) => edge.node) || [];
+    const products = json?.data?.products?.edges?.map((edge) => edge.node) || [];
 
     if (products.length === 0) {
       block.append('No products found.');
@@ -115,7 +111,9 @@ export default async function decorate(block) {
         };
 
         document.dispatchEvent(
-          new CustomEvent('add-to-cart', { detail: item })
+          new CustomEvent('add-to-cart', {
+            detail: item,
+          }),
         );
       });
 
@@ -126,6 +124,7 @@ export default async function decorate(block) {
 
     block.appendChild(ul);
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error('Shopify API Error:', err);
     loading.textContent = 'Failed to load products.';
   }
