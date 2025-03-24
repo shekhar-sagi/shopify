@@ -1,3 +1,5 @@
+const SHOPIFY_STORE_DOMAIN = 'y5kch8-7n.myshopify.com';
+
 function getCart() {
   try {
     return JSON.parse(localStorage.getItem('shopify-cart')) || [];
@@ -31,14 +33,15 @@ function renderMiniCart(block) {
 export default function decorate(block) {
   block.classList.add('minicart');
   console.log('Hello from minicart block');
-  // Always render, even if cart is empty
-  renderMiniCart(block);
+
+  renderMiniCart(block); // Always show cart icon
 
   document.addEventListener('add-to-cart', (e) => {
     const item = e.detail;
 
     const cart = getCart();
     const existing = cart.find((i) => i.id === item.id);
+
     if (existing) {
       existing.quantity += item.quantity || 1;
     } else {
@@ -50,6 +53,18 @@ export default function decorate(block) {
   });
 
   block.addEventListener('click', () => {
-    window.location.href = '/cart';
+    const cart = getCart();
+
+    if (!cart.length) return;
+
+    const cartParams = cart
+      .map((item) => {
+        const variantId = item.id?.split('/')?.pop();
+        return `${variantId}:${item.quantity}`;
+      })
+      .join(',');
+
+    const shopifyCartUrl = `https://${SHOPIFY_STORE_DOMAIN}/cart/${cartParams}`;
+    window.location.href = shopifyCartUrl;
   });
 }
