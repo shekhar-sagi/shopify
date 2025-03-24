@@ -197,7 +197,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "pageTitle",
+        "name": "pagetitle",
         "label": "Page Title",
         "value": "Choose the best !!"
       }
