@@ -1,5 +1,4 @@
-
-import { fetchShopifyProducts } from '../../scripts/shopify-api.js';
+import fetchShopifyProducts from '../../scripts/shopify-api.js';
 
 export default async function decorate(block) {
   block.classList.add('plp-static');
@@ -72,7 +71,7 @@ export default async function decorate(block) {
         document.dispatchEvent(
           new CustomEvent('add-to-cart', {
             detail: item,
-          })
+          }),
         );
       });
 
