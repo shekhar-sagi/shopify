@@ -1,5 +1,5 @@
-const SHOPIFY_STORE_DOMAIN = 'y5kch8-7n.myshopify.com';
-const SHOPIFY_ACCESS_TOKEN = '6964502587c1f9d114a7e3f93fd0a40b';
+
+import { fetchShopifyProducts } from '../../scripts/shopify-api.js';
 
 export default async function decorate(block) {
   block.classList.add('plp-static');
@@ -13,52 +13,11 @@ export default async function decorate(block) {
   loading.textContent = 'Loading products...';
   block.append(loading);
 
-  const query = `
-    {
-      products(first: 10) {
-        edges {
-          node {
-            id
-            title
-            descriptionHtml
-            featuredImage {
-              url
-              altText
-            }
-            variants(first: 1) {
-              edges {
-                node {
-                  id
-                  priceV2 {
-                    amount
-                    currencyCode
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-
   try {
-    const response = await fetch(`https://${SHOPIFY_STORE_DOMAIN}/api/2025-01/graphql.json`, {
-      method: 'POST',
-      headers: {
-        'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    });
-
-    const json = await response.json();
+    const products = await fetchShopifyProducts();
     loading.remove();
 
-    const products = json?.data?.products?.edges?.map((edge) => edge.node) || [];
-
-    if (products.length === 0) {
+    if (!products.length) {
       block.append('No products found.');
       return;
     }
@@ -113,7 +72,7 @@ export default async function decorate(block) {
         document.dispatchEvent(
           new CustomEvent('add-to-cart', {
             detail: item,
-          }),
+          })
         );
       });
 
