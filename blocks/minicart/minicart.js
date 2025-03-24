@@ -30,7 +30,7 @@ function renderMiniCart(block) {
 
 export default function decorate(block) {
   block.classList.add('minicart');
-
+  console.log('Hello from minicart block');
   // Always render, even if cart is empty
   renderMiniCart(block);
 
