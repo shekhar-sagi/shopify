@@ -1,5 +1,4 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const banner = document.createElement('div');
@@ -9,7 +8,7 @@ export default function decorate(block) {
   rows.forEach((row) => {
     const imageEl = row.querySelector('picture, video');
     const title = row.querySelector('h1, h2, h3, h4, h5, h6');
-    const subtitle = [...row.children].find(el => el.tagName === 'P' && el !== title);
+    const subtitle = [...row.children].find((el) => el.tagName === 'P' && el !== title);
     const cta = row.querySelector('a');
 
     const bannerContent = document.createElement('div');
