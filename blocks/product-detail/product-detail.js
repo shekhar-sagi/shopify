@@ -2,36 +2,45 @@ import fetchShopifyProductById from '../../scripts/product-page.js';
 
 export default async function decorate(block) {
   block.classList.add('product-detail');
+
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
-  
+
   if (!productId) {
     block.innerHTML = 'Product ID not found in the URL.';
     return;
   }
-  
+
   const loading = document.createElement('p');
   loading.textContent = 'Loading product details...';
   block.append(loading);
-  
+
   try {
     const product = await fetchShopifyProductById(productId);
     loading.remove();
-    
+
     if (!product) {
       block.innerHTML = 'Product not found.';
       return;
     }
 
     // Destructure necessary product information
-    const { title: productTitle, descriptionHtml, featuredImage, variants } = product;
+    const {
+      title: productTitle,
+      descriptionHtml,
+      featuredImage,
+      variants,
+    } = product;
+
     const variant = variants?.edges?.[0]?.node;
     const imageUrl = featuredImage?.url || '';
     const imageAlt = featuredImage?.altText || productTitle;
-    const price = variant?.priceV2 ? `${variant.priceV2.amount} ${variant.priceV2.currencyCode}` : 'Unavailable';
+    const price = variant?.priceV2
+      ? `${variant.priceV2.amount} ${variant.priceV2.currencyCode}`
+      : 'Unavailable';
 
     const sizeOptions = variant?.selectedOptions
-      .map(option => `<option value="${option.value}">${option.value}</option>`)
+      .map((option) => `<option value="${option.value}">${option.value}</option>`)
       .join('');
 
     block.innerHTML = `
@@ -74,6 +83,7 @@ export default async function decorate(block) {
       </div>
     `;
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error('Shopify API Error:', err);
     loading.textContent = 'Failed to load product details.';
   }
