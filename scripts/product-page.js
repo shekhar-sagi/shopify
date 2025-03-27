@@ -50,10 +50,10 @@ async function fetchShopifyProductById(productId) {
       headers: {
         'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
       },
-      body: JSON.stringify({ query: PRODUCT_QUERY, variables })
-    }
+      body: JSON.stringify({ query: PRODUCT_QUERY, variables }),
+    },
   );
 
   const json = await response.json();
