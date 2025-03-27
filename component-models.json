@@ -292,5 +292,17 @@
         "value": "Choose the best !!"
       }
     ]
+  },
+  {
+    "id": "product-detail",
+    "fields": [
+      {
+        "component": "text",
+        "name": "productId",
+        "label": "Product ID",
+        "description": "Shopify product GID"
+      }
+    ]
   }
+  
 ]

@@ -26,12 +26,12 @@ export default async function decorate(block) {
       const price = variant.priceV2 ? `${variant.priceV2.amount} ${variant.priceV2.currencyCode}` : 'Unavailable';
 
       return `
-        <div class="product-list-page-card">
+        <a class="product-list-page-card" href="/product-detail?id=${encodeURIComponent(product.id)}">
           <img src="${imageUrl}" alt="${imageAlt}">
           <h3>${productTitle}</h3>
           <div class="rating" aria-label="Rating 0 out of 5 stars"><span>☆☆☆☆☆</span> <span>(0)</span></div>
           <p class="price">$${price}</p>
-        </div>
+        </a>
       `;
     }).join('');
 

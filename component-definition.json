@@ -218,7 +218,24 @@
               }
             }
           }
+        },
+        {
+          "title": "Product Detail",
+          "id": "product-detail",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Detail",
+                  "model": "product-detail",
+                  "title": "This is product detail page"
+                }
+              }
+            }
+          }
         }
+        
         
         
       ]
