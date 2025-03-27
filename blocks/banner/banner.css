@@ -1,0 +1,36 @@
+.banner {
+  position: relative;
+  background: no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 100vh;
+  color: #fff;
+}
+
+.banner .banner-content {
+  text-align: center;
+}
+
+.banner .banner-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.banner .banner-subtitle {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .banner .banner-title {
+    font-size: 2rem;
+  }
+
+  .banner .banner-subtitle {
+    font-size: 0.875rem;
+  }
+}
