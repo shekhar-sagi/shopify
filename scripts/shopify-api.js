@@ -39,9 +39,9 @@ async function fetchShopifyProducts() {
         'X-Shopify-Storefront-Access-Token': SHOPIFY_ACCESS_TOKEN,
         'Content-Type': 'application/json',
         Accept: 'application/json',
-      },
+      }, 
       body: JSON.stringify({ query: PRODUCTS_QUERY }),
-    }
+    },
   );
 
   const json = await response.json();
