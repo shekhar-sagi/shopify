@@ -287,8 +287,8 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "pagetitle",
-        "label": "Page Title",
+        "name": "plptitle",
+        "label": "PLP Title",
         "value": "Choose the best !!"
       }
     ]
