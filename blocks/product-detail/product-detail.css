@@ -22,7 +22,7 @@
 
 .product-detail .rating-review a {
   margin-left: 10px;
-  color: #0077cc;
+  color: #07c;
   text-decoration: none;
 }
 
@@ -97,15 +97,15 @@
   margin-bottom: 5px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .product-detail {
     padding: 15px;
   }
-  
+
   .product-detail h1 {
     font-size: 20px;
   }
-  
+
   .product-detail .price {
     font-size: 18px;
   }
