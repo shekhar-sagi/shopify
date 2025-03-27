@@ -1,4 +1,5 @@
 import fetchShopifyProductById from '../../scripts/product-page.js';
+import { addToCart } from '../../scripts/cart-service.js';
 
 export default async function decorate(block) {
   block.classList.add('product-detail');
@@ -24,7 +25,6 @@ export default async function decorate(block) {
       return;
     }
 
-    // Destructure necessary product information
     const {
       title: productTitle,
       descriptionHtml,
@@ -43,7 +43,7 @@ export default async function decorate(block) {
       .map((option) => `<option value="${option.value}">${option.value}</option>`)
       .join('');
 
-      block.innerHTML = `
+    block.innerHTML = `
       <div class="product-detail-wrapper">
         <div class="product-image-container">
           <img src="${imageUrl}" alt="${imageAlt}" class="product-image">
@@ -58,8 +58,8 @@ export default async function decorate(block) {
           <p>${descriptionHtml}</p>
           <p class="price">$${price}</p>
           <p>
-            4 interest-free installments, or from 
-            <strong>$43.23/mo</strong> with 
+            4 interest-free installments, or from
+            <strong>$43.23/mo</strong> with
             <a href="#shop-pay">shopPay</a>
           </p>
           <a href="#details" class="details-link">Size and Dimensions</a>
@@ -72,6 +72,19 @@ export default async function decorate(block) {
         </div>
       </div>
     `;
+
+    const addToCartBtn = block.querySelector('.add-to-cart');
+    addToCartBtn?.addEventListener('click', () => {
+      if (!variant) return;
+      addToCart({
+        id: variant.id,
+        title: productTitle,
+        quantity: 1,
+        price: variant.priceV2?.amount,
+        currency: variant.priceV2?.currencyCode,
+        image: imageUrl,
+      });
+    });
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('Shopify API Error:', err);
