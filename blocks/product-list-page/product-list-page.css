@@ -34,13 +34,13 @@
   margin: 10px 0;
 }
 
-@media screen and (max-width: 768px) {
+@media (width <= 768px) {
   .product-list-page .product-list-page-card {
     width: calc(50% - 40px);
   }
 }
 
-@media screen and (max-width: 480px) {
+@media (width <= 480px) {
   .product-list-page .product-list-page-card {
     width: calc(100% - 40px);
   }
