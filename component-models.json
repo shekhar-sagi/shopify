@@ -214,5 +214,71 @@
         "value": "Cart"
       }
     ]
+  }, {
+    "id": "banner",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "media",
+        "label": "Image or Video",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "mediaAlt",
+        "label": "Alt Text"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "group",
+        "name": "cta",
+        "label": "Call to Action",
+        "fields": [
+          {
+            "component": "aem-content",
+            "name": "link",
+            "label": "Link"
+          },
+          {
+            "component": "text",
+            "name": "linkText",
+            "label": "Text"
+          },
+          {
+            "component": "text",
+            "name": "linkTitle",
+            "label": "Title"
+          },
+          {
+            "component": "select",
+            "name": "linkType",
+            "label": "Type",
+            "options": [
+              {
+                "name": "default",
+                "value": ""
+              },
+              {
+                "name": "primary",
+                "value": "primary"
+              },
+              {
+                "name": "secondary",
+                "value": "secondary"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
