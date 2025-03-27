@@ -1,4 +1,4 @@
-import fetchShopifyProductById from '../../scripts/shopify-api.js';
+import fetchShopifyProductById from '../../scripts/product-page.js';
 
 export default async function decorate(block) {
   block.classList.add('product-detail');
@@ -33,6 +33,7 @@ export default async function decorate(block) {
 
     block.innerHTML = `
       <h1>${productTitle}</h1>
+      <img src="${imageUrl}" alt="${imageAlt}" class="product-image">
       <div class="rating-review">
         <span aria-label="0 stars" role="img">⭐⭐⭐⭐⭐</span>
         <span>(0)</span>
