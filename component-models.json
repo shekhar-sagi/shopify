@@ -280,5 +280,17 @@
         ]
       }
     ]
+  },
+  {
+    "id": "product-list-page",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "pagetitle",
+        "label": "Page Title",
+        "value": "Choose the best !!"
+      }
+    ]
   }
 ]
