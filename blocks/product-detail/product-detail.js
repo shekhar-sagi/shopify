@@ -76,14 +76,17 @@ export default async function decorate(block) {
     const addToCartBtn = block.querySelector('.add-to-cart');
     addToCartBtn?.addEventListener('click', () => {
       if (!variant) return;
-      addToCart({
+      const item = {
         id: variant.id,
         title: productTitle,
         quantity: 1,
         price: variant.priceV2?.amount,
         currency: variant.priceV2?.currencyCode,
         image: imageUrl,
-      });
+      };
+
+      addToCart(item);
+      document.dispatchEvent(new CustomEvent('add-to-cart', { detail: item }));
     });
   } catch (err) {
     // eslint-disable-next-line no-console
