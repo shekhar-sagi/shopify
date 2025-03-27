@@ -85,7 +85,6 @@ export default async function decorate(block) {
         image: imageUrl,
       };
 
-      addToCart(item);
       document.dispatchEvent(new CustomEvent('add-to-cart', { detail: item }));
     });
   } catch (err) {
