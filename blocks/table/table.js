@@ -7,7 +7,7 @@
 function buildCell(rowIndex) {
   const cell = rowIndex ? document.createElement('td') : document.createElement('th');
   if (!rowIndex) cell.setAttribute('scope', 'col');
-    return cell;
+  return cell;
 }
 export default async function decorate(block) {
   const table = document.createElement('table');
@@ -16,7 +16,7 @@ export default async function decorate(block) {
 
   const header = !block.classList.contains('no-header');
   if (header) table.append(thead);
-    table.append(tbody);
+  table.append(tbody);
 
   [...block.children].forEach((child, i) => {
     const row = document.createElement('tr');

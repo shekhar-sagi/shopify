@@ -1,5 +1,5 @@
 import fetchShopifyProductById from '../../scripts/product-page.js';
-import { addToCart } from '../../scripts/cart-service.js';
+// import { addToCart } from '../../scripts/cart-service.js';
 
 export default async function decorate(block) {
   block.classList.add('product-detail');
