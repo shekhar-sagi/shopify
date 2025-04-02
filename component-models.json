@@ -303,6 +303,17 @@
         "description": "Shopify product GID"
       }
     ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "table",
+        "label": "Table",
+        "description": "Shopify cart table"
+      }
+    ]
   }
   
 ]
