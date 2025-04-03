@@ -3,97 +3,49 @@
  * Recreate a table
  * https://www.hlx.live/developer/block-collection/table
  */
-import fetchCartDetails from '../../scripts/cart-page.js';
+import { getCart } from '../../scripts/cart-service.js';
 
 export default async function decorate(block) {
-  console.log('Table block');
-  const productCard = document.createElement('div');
-  productCard.className = 'product-card';
-  const productCardCol1 = document.createElement('div');
-  productCardCol1.className = 'col1';
-  const productCardCol2 = document.createElement('div');
-  productCardCol2.className = 'col2';
-
-  const productImg = document.createElement('img');
-  productCardCol1.append(productImg);
-  const productDetailTemplate = '<div>title</div><div>price</div><div>description</div>';
-  productCardCol2.innerHTML = productDetailTemplate;
-  productCard.append(productCardCol1, productCardCol2);
-  const cartId = 'gid://shopify/Cart/Z2NwLWFzaWEtc291dGhlYXN0MTowMUpROFgxRTJEV0E5VjIxVlFESEVHQlRBMg'; // Replace with actual product I
-
-  // call to fetch cart
-  try {
-    console.log(cartId);
-    const cart = await fetchCartDetails(cartId);
-    console.log(cart);
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error('Shopify API Error:', err);
-  }
-
+  const productList = getCart();
+  // const totalVal = 0;
   const table = document.createElement('table');
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
 
   table.append(thead);
   table.append(tbody);
-  const tabl = {
-    head: {
-      headIndex: 0,
-      cells: [{
-        cellIndex: 0,
-        cellValue: 'PRODUCT',
-      },
-      {
-        cellIndex: 1,
-        cellValue: 'QUANTITY',
-      },
-      {
-        cellIndex: 2,
-        cellValue: 'TOTAL',
-      }],
-    },
-    row: [{
-      rowIndex: 0,
-      cells: [{
-        cellIndex: 0,
-        cellValue: 'cell 1',
-      },
-      {
-        cellIndex: 0,
-        cellValue: 'cell 2',
-      },
-      {
-        cellIndex: 0,
-        cellValue: 'cell 3',
-      }],
-    }],
+  const tableView = {
+    tableHead: ['PRODUCT', 'QUANTITY', 'TOTAL'],
+    tableRows: [],
   };
-  console.log(tabl.row);
-
-  tabl.head.cells.forEach((cell) => {
-    console.log(cell);
-    const tcell = document.createElement('th');
-    tcell.textContent = cell.cellValue;
-    thead.append(tcell);
+  productList.forEach((row1) => {
+    tableView.tableRows.push(row1);
   });
 
-  tabl.row.forEach((row1) => {
-    const trow = document.createElement('tr');
-    tbody.append(trow);
-    console.log(row1.cells);
-    row1.cells.forEach((cell, cellIndex) => {
-      const tcell = document.createElement('td');
-      if (cellIndex === 0) {
-        tcell.append(productCard);
-        trow.append(tcell);
-      } else if (cellIndex === 2) {
-        tcell.textContent = '$100';
+  tableView.tableHead.forEach((thtext) => {
+    const hcell = document.createElement('th');
+    hcell.textContent = thtext;
+    thead.append(hcell);
+  });
+  tableView.tableRows.forEach((trtext) => {
+    const row = document.createElement('tr');
+    tableView.tableHead.forEach((index) => {
+      const rcell = document.createElement('td');
+      if (index === 0) {
+        rcell.innerHTML = `<div class="product-card">
+            <div class="card-left"><img src="${trtext.image}"></div>
+            <div class="card-right"><p>${trtext.title}</p><p>$${trtext.price}</p><p></p></div>
+         </div>`;
+        row.append(rcell);
+      } else if (index === 1) {
+        rcell.innerHTML = `<span>${trtext.quantity}</span>`;
+        row.append(rcell);
       } else {
-        tcell.textContent = 'counter';
+        rcell.innerHTML = `<span>$${trtext.price}</span>`;
+        row.append(rcell);
       }
-      trow.append(tcell);
     });
+    tbody.append(row);
   });
 
   block.innerHTML = '';
