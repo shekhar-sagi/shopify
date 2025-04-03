@@ -29,7 +29,7 @@ export default async function decorate(block) {
   });
   tableView.tableRows.forEach((trtext) => {
     const row = document.createElement('tr');
-    tableView.tableHead.forEach((index) => {
+    tableView.tableHead.forEach((htext, index) => {
       const rcell = document.createElement('td');
       if (index === 0) {
         rcell.innerHTML = `<div class="product-card">
