@@ -42,3 +42,16 @@
 tbody tr td:first-child{
     width: 60%;
 }
+
+td span.remove, td span.add{
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+}
+
+td span.delete{
+    cursor: pointer;
+    font-size: 13px;
+}
+
+

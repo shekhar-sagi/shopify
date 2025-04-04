@@ -27,6 +27,20 @@ export function addToCart(item) {
   setCart(cart);
 }
 
+export function removeFromCart(item) {
+  const cart = getCart();
+  const itemIndex = cart.findIndex((i) => i.id === item.id);
+
+  if (itemIndex !== -1) {
+    if (cart[itemIndex].quantity > 1) {
+      cart[itemIndex].quantity -= 1;
+    } else {
+      cart.splice(itemIndex, 1);
+    }
+    setCart(cart);
+  }
+}
+
 export function getShopifyCartUrl() {
   const cart = getCart();
   if (!cart.length) return null;
@@ -39,4 +53,9 @@ export function getShopifyCartUrl() {
     .join(',');
 
   return `https://${SHOPIFY_STORE_DOMAIN}/cart/${cartParams}`;
+}
+
+export function updateCartCount() {
+  const count = getCartCount();
+  document.querySelector('.minicart-count').textContent = count;
 }
