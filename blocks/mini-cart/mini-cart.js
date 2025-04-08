@@ -1,7 +1,6 @@
 import {
   getCartCount,
   addToCart,
-  getShopifyCartUrl,
 } from '../../scripts/cart-service.js';
 
 function renderMiniCart(block) {
@@ -32,7 +31,7 @@ export default function decorate(block) {
   });
 
   block.addEventListener('click', () => {
-    const url = '/cart'//getShopifyCartUrl();
+    const url = '/cart'; // getShopifyCartUrl();
     if (url) window.location.href = url;
   });
 }
