@@ -52,24 +52,15 @@ async function fetchCartDetails() {
 export async function checkout() {
   const cart = getCart();
   if (cart.length === 0) {
-    alert('Your cart is empty!');
+    console.log('Your cart is empty!');
     return;
   }
   const response = await fetch(
     `https://${SHOPIFY_STORE_DOMAIN}/admin/api/2025-01/orders.json`,
-    {
-      method: 'GET',
-      // headers: {
-      //   'X-Shopify-Access-Token': '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',
-      //   mode: 'no-cors',
-      //   'Content-Type': 'application/json',
-      //   Accept: 'application/json',
-      // },
-    },
   );
   const json = await response.json();
   console.log(json);
-  // window.location.href = checkoutUrl;
+  window.location.href = '/checkout';
 }
 
 export default fetchCartDetails;
