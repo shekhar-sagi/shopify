@@ -9,6 +9,7 @@ import {
   addToCart,
   updateCartCount,
 } from '../../scripts/cart-service.js';
+import { checkout } from '../../scripts/cart-page.js';
 
 function updateCounter(id, action) {
   const tr = document.querySelectorAll('tr');
@@ -40,6 +41,7 @@ function handleCartEvents() {
   const removeBtns = document.querySelectorAll('.remove');
   const addBtns = document.querySelectorAll('.add');
   const deleteBtns = document.querySelectorAll('.delete');
+  const checkoutBtn = document.querySelector('[title="checkout"]');
 
   removeBtns.forEach((removeBtn) => {
     removeBtn.addEventListener('click', (event) => {
@@ -64,6 +66,10 @@ function handleCartEvents() {
       removeFromCart({ id: event.target.closest('tr').id });
       updateCartCount();
     });
+  });
+
+  checkoutBtn.addEventListener('click', () => {
+    checkout();
   });
 }
 export default async function decorate(block) {

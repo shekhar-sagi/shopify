@@ -32,7 +32,7 @@ export default function decorate(block) {
   });
 
   block.addEventListener('click', () => {
-    const url = getShopifyCartUrl();
+    const url = '/cart'//getShopifyCartUrl();
     if (url) window.location.href = url;
   });
 }
