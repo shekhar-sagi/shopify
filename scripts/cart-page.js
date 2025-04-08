@@ -59,12 +59,12 @@ export async function checkout() {
     `https://${SHOPIFY_STORE_DOMAIN}/admin/api/2025-01/orders.json`,
     {
       method: 'GET',
-      headers: {
-        'X-Shopify-Access-Token': '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',
-        mode: 'no-cors',
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
+      // headers: {
+      //   'X-Shopify-Access-Token': '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',
+      //   mode: 'no-cors',
+      //   'Content-Type': 'application/json',
+      //   Accept: 'application/json',
+      // },
     },
   );
   const json = await response.json();
