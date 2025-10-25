@@ -41,8 +41,8 @@
     .destination-feature .df-content {
       grid-template-columns: 1fr;
     }
+
     .destination-feature .df-image {
       order: -1;
     }
   }
-  
