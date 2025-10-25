@@ -314,6 +314,30 @@
         "description": "Shopify cart table"
       }
     ]
+  },
+  {
+    "id": "destination-feature",
+    "fields": [
+      { "component": "text", "name": "title", "label": "Title", "valueType": "string", "value": "" },
+      { "component": "richtext", "name": "description", "label": "Description", "valueType": "string", "value": "" },
+      { "component": "media", "name": "image", "label": "Image", "valueType": "string", "value": "" },
+      { "component": "text", "name": "imageAlt", "label": "Image Alt", "valueType": "string", "value": "" },
+      { "component": "text", "name": "ctaLabel", "label": "CTA Label", "valueType": "string", "value": "" },
+      { "component": "text", "name": "ctaHref", "label": "CTA Link", "valueType": "string", "value": "" },
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Layout",
+        "description": "Choose image position",
+        "valueType": "string",
+        "value": "image-left",
+        "options": [
+          { "name": "Image left",  "value": "image-left" },
+          { "name": "Image right", "value": "image-right" }
+        ]
+      }
+    ]
   }
+  
   
 ]

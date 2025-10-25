@@ -250,6 +250,28 @@
               }
             }
           }
+        },
+        {
+          "title": "Destination Feature",
+          "id": "destination-feature",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Destination feature",
+                  "model": "destination-feature",
+                  "title": "Goa",
+                  "description": "Goa awaits you with its golden sands…",
+                  "image": "/content/dam/example/goa.jpg",
+                  "imageAlt": "Colorful beach huts in Goa",
+                  "ctaLabel": "Read all about Goa",
+                  "ctaHref": "/en-in/destinations/goa",
+                  "classes": "image-left"
+                }
+              }
+            }
+          }
         }
         
         

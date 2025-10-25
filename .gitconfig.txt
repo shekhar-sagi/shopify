@@ -1,0 +1,3 @@
+[user]
+    name = Chandra
+    email = shekhar.sagi@gmail.com
